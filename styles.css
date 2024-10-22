@@ -1,11 +1,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #e7e7e7;
+  background-color: #dff2eb;
   margin: 0;
 }
 
 .header {
-  background-color: #333;
+  background-color: #4a628a;
   color: #fff;
   padding: 10px 0;
   display: flex;
@@ -16,7 +16,7 @@ body {
 .header a {
   font-size: larger;
   padding: 10px;
-  background-color: red;
+  background-color: #7ab2d3;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
@@ -24,4 +24,8 @@ body {
 
 a:visited {
   color: inherit;
+}
+
+.header a:hover {
+  background-color: #b9e5e8;
 }
