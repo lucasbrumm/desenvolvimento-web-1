@@ -30,11 +30,10 @@ a:visited {
   background-color: #b9e5e8;
 }
 
-.index {
+.index-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   color: #333333;
 }
 
@@ -67,4 +66,35 @@ a:visited {
   transform: scale(1.05);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
   cursor: pointer;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333333;
+}
+
+.card-contact {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.card-contact img {
+  width: 50%;
+  border-radius: 100%;
+}
+
+.card-contat-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
