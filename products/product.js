@@ -1,5 +1,14 @@
 class Product {
-  constructor(id, title, description, price, brand, category, photos) {
+  constructor(
+    id,
+    title,
+    description,
+    price,
+    brand,
+    category,
+    photos,
+    thumbnail
+  ) {
     this.id = id
     this.title = title
     this.description = description
@@ -7,5 +16,6 @@ class Product {
     this.brand = brand
     this.category = category
     this.photos = photos
+    this.thumbnail = thumbnail
   }
 }

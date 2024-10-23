@@ -4,31 +4,31 @@ const users = []
 let editingUserId = null
 
 function displayUsers(filteredUsers = users) {
-  const postList = document.getElementById('user-list')
-  postList.innerHTML = ''
+  const userList = document.getElementById('user-list')
+  userList.innerHTML = ''
   filteredUsers.forEach((user) => {
     const listItem = document.createElement('div')
-    listItem.setAttribute('class', 'card-users')
+    listItem.setAttribute('class', 'card-default')
     listItem.innerHTML = `
       <img src="${user.image}" alt="${user.firstName}" />
       <span><strong>Nome:</strong> ${user.firstName}</span>
       <span><strong>Sobrenome:</strong> ${user.lastName}</span>
       <span><strong>Email:</strong> ${user.email}</span>
       <span><strong>Idade:</strong> ${user.age}</span>
-      <div class="container-user-card-footer">
-        <button class="btn-edit-user" data-id="${user.id}">
+      <div class="container-default-card-footer">
+        <button class="btn-edit-card" data-id="${user.id}">
           <i class="fa-solid fa-pen-to-square"></i>
         </button>
-        <button class="btn-delete-user" data-id="${user.id}">
+        <button class="btn-delete-card" data-id="${user.id}">
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>
     `
-    postList.appendChild(listItem)
+    userList.appendChild(listItem)
   })
 
   // Add event listeners to edit buttons
-  document.querySelectorAll('.btn-edit-user').forEach((button) => {
+  document.querySelectorAll('.btn-edit-card').forEach((button) => {
     button.addEventListener('click', (event) => {
       const userId = event.currentTarget.getAttribute('data-id')
       editUser(userId)
@@ -36,7 +36,7 @@ function displayUsers(filteredUsers = users) {
   })
 
   // Add event listeners to delete buttons
-  document.querySelectorAll('.btn-delete-user').forEach((button) => {
+  document.querySelectorAll('.btn-delete-card').forEach((button) => {
     button.addEventListener('click', (event) => {
       const userId = event.currentTarget.getAttribute('data-id')
       deleteUser(userId)

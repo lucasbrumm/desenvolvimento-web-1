@@ -4,11 +4,124 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/modal.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Document</title>
   </head>
   <body>
     <header class="header"></header>
-    <h2>Produtos</h2>
+    <div class="container-products">
+      <h2>Lista de Produtos</h2>
+      <input
+        class="input-find-products"
+        type="text"
+        id="products-filter"
+        placeholder="Buscar produtos..."
+      />
+      <div id="product-list" class="product-list"></div>
+
+      <div class="container-add-user">
+        <button id="btn-add-product" class="btn-add-product">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div id="addProductModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modal-title">Adicionar Produto</h2>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <form id="addProductForm">
+              <div class="field-group">
+                <label for="firstName">Título</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  minlength="3"
+                  maxlength="50"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="lastName">Descrição:</label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  min="0"
+                  minlength="3"
+                  maxlength="50"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="email">Preço:</label>
+                <input
+                  type="number"
+                  id="email"
+                  name="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="age">Marca:</label>
+                <input
+                  type="text"
+                  id="brand"
+                  name="brand"
+                  min="3"
+                  max="50"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="image">Cartegoria:</label>
+                <input
+                  type="text"
+                  id="category"
+                  name="category"
+                  min="3"
+                  max="50"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="image">Foto:</label>
+                <input
+                  type="url"
+                  id="image"
+                  name="image"
+                  pattern="https?://.+"
+                />
+              </div>
+              <div class="field-group"></div>
+              <div class="container-btn-submit">
+                <button
+                  type="submit"
+                  id="modal-submit-button"
+                  class="btn-submit"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="../includeHeader.js"></script>
+    <script src="./productsScript.js"></script>
+    <script src="./product.js"></script>
   </body>
 </html>
