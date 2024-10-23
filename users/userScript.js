@@ -127,6 +127,7 @@ function validateForm(formData) {
   const age = formData.get('age')
   const image = formData.get('image')
 
+  // regex patterns
   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
   const urlPattern = /^https?:\/\/.+/
 

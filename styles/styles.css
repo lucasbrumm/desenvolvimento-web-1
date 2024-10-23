@@ -30,19 +30,40 @@ a:visited {
   background-color: #b9e5e8;
 }
 
-.index-container {
+.index-container,
+.contact-container,
+.container-users,
+.container-products {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #333333;
 }
 
-.index-cakes {
+.index-cakes,
+.user-list,
+.product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
+.card-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.card-default,
 .index-cake-card {
   display: flex;
   flex-direction: column;
@@ -57,93 +78,22 @@ a:visited {
   text-align: center;
 }
 
-.index-cake-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
+.card-default:hover,
 .index-cake-card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #333333;
-}
-
-.card-contact {
-  display: flex;
-  align-items: center;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  width: 300px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  text-align: center;
-}
-
+.card-default img,
 .card-contact img {
   width: 50%;
   border-radius: 100%;
 }
 
-.card-contat-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.container-users {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #333333;
-}
-
-.input-find-users {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-}
-
-.user-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.index-cake-card img {
   width: 100%;
-}
-
-.card-default {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f8f9fa;
   border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  width: 350px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  text-align: center;
-}
-
-.card-default:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
-}
-
-.card-default img {
-  width: 50%;
-  border-radius: 100%;
 }
 
 .container-default-card-footer {
@@ -152,10 +102,11 @@ a:visited {
   width: 100%;
 }
 
-.btn-edit-card {
-  background-color: #cce5ff;
+.btn-edit-card,
+.btn-delete-card,
+.btn-add-user,
+.btn-add-product {
   border: none;
-  color: #004085;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -166,67 +117,36 @@ a:visited {
   border-radius: 10px;
 }
 
-.btn-edit-user:hover {
+.btn-edit-card {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.btn-edit-card:hover {
   background-color: #b8daff;
 }
 
 .btn-delete-card {
   background-color: #f8d7da;
-  border: none;
   color: #721c24;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
 }
 
 .btn-delete-card:hover {
   background-color: #f5c6cb;
 }
 
-.container-add-user {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin: 20px;
-}
-
-.btn-add-user {
+.btn-add-user,
+.btn-add-product {
   background-color: #f8f9fa;
-  border: none;
   color: #155724;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
 }
 
-.btn-add-user:hover {
+.btn-add-user:hover,
+.btn-add-product:hover {
   background-color: #e9ecef;
 }
 
-.container-products {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #333333;
-}
-
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-}
-
+.input-find-users,
 .input-find-products {
   width: 50%;
   padding: 12px 20px;
@@ -236,27 +156,10 @@ a:visited {
   border-radius: 4px;
 }
 
+.container-add-user,
 .container-add-product {
   position: fixed;
   bottom: 0;
   right: 0;
   margin: 20px;
-}
-
-.btn-add-product {
-  background-color: #f8f9fa;
-  border: none;
-  color: #155724;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-.btn-add-product:hover {
-  background-color: #e9ecef;
 }

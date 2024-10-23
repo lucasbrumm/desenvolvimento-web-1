@@ -99,7 +99,7 @@ function saveProduct(event) {
     id: editingUserId || Date.now(),
     title: formData.get('title'),
     description: formData.get('description'),
-    price: formData.get('price'),
+    price: parseFloat(formData.get('price')),
     brand: formData.get('brand'),
     category: formData.get('category'),
     thumbnail: imageUrl,
