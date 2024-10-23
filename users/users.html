@@ -29,21 +29,40 @@
     <!-- MODAL -->
     <div id="addUserModal" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Adicionar Usuário</h2>
-        <form id="addUserForm">
-          <label for="firstName">Nome:</label>
-          <input type="text" id="firstName" name="firstName" required />
-          <label for="lastName">Sobrenome:</label>
-          <input type="text" id="lastName" name="lastName" required />
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-          <label for="age">Idade:</label>
-          <input type="number" id="age" name="age" required />
-          <label for="image">Imagem:</label>
-          <input type="text" id="image" name="image" required />
-          <button type="submit">Adicionar</button>
-        </form>
+        <div class="modal-header">
+          <h2 id="modal-title">Adicionar Usuário</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="addUserForm">
+            <div class="field-group">
+              <label for="firstName">Nome</label>
+              <input type="text" id="firstName" name="firstName" required />
+            </div>
+            <div class="field-group">
+              <label for="lastName">Sobrenome:</label>
+              <input type="text" id="lastName" name="lastName" required />
+            </div>
+            <div class="field-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="field-group">
+              <label for="age">Idade:</label>
+              <input type="number" id="age" name="age" min="0" required />
+            </div>
+            <div class="field-group">
+              <label for="image">Imagem:</label>
+              <input type="file" id="image" name="image" />
+            </div>
+            <div class="field-group"></div>
+            <div class="container-btn-submit">
+              <button type="submit" id="modal-submit-button" class="btn-submit">
+                Adicionar
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 

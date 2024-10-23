@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+:root {
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -13,15 +21,81 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
+  width: 20%;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.container-btn-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  background-color: #4a628a;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 85%;
+  border-radius: 10px;
+}
+
+.btn-submit:hover {
+  opacity: 0.8;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.field-group input {
+  border: solid 2px #f0f0f0;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  display: block;
   width: 80%;
+}
+
+.field-group input:focus {
+  outline: none;
+}
+
+.field-group label {
+  display: block;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.field-group.error input {
+  border-color: var(--error-color);
+}
+.field-group.success input {
+  border-color: var(--success-color);
+}
+.field-group small {
+  color: var(--error-color);
 }
 
 .close {
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
 }
