@@ -27,15 +27,13 @@ function displayProducts(filteredProducts = products) {
     productList.appendChild(listItem)
   })
 
-  // Add event listeners to edit buttons
-  document.querySelectorAll('.btn-edit-user').forEach((button) => {
+  document.querySelectorAll('.btn-edit-card').forEach((button) => {
     button.addEventListener('click', (event) => {
       const productId = event.currentTarget.getAttribute('data-id')
-      editUser(productId)
+      editProduct(productId)
     })
   })
 
-  // Add event listeners to delete buttons
   document.querySelectorAll('.btn-delete-card').forEach((button) => {
     button.addEventListener('click', (event) => {
       const productId = event.currentTarget.getAttribute('data-id')
@@ -65,14 +63,32 @@ function fetchProducts() {
     })
 }
 
-function editProduct() {}
+function editProduct(productId) {
+  const product = products.find((u) => u.id == productId)
+  if (product) {
+    const form = document.getElementById('addProductForm')
+    form.title.value = product.title
+    form.description.value = product.description
+    form.price.value = product.price
+    form.brand.value = product.brand
+    form.category.value = product.category
+    form.thumbnail.value = product.thumbnail
+
+    document.getElementById('modal-title').innerText = 'Editar Produto'
+    document.getElementById('modal-submit-button').innerText = 'Salvar'
+
+    editingUserId = productId
+
+    const modal = document.getElementById('addProductModal')
+    modal.style.display = 'block'
+  }
+}
 
 function saveProduct(event) {
   event.preventDefault()
   const form = document.getElementById('addProductForm')
   const formData = new FormData(form)
 
-  // Validate form fields
   if (!validateForm(formData)) {
     return
   }
@@ -80,7 +96,7 @@ function saveProduct(event) {
   const imageUrl = formData.get('thumbnail') || form.thumbnail.value
 
   const newProduct = {
-    id: editingUserId || Date.now(), // Use existing ID or generate a new one
+    id: editingUserId || Date.now(),
     title: formData.get('title'),
     description: formData.get('description'),
     price: formData.get('price'),
@@ -90,9 +106,8 @@ function saveProduct(event) {
   }
 
   if (editingUserId) {
-    // Update existing user
     const productIndex = products.findIndex((u) => u.id == editingUserId)
-    products[productIndex] = newUser
+    products[productIndex] = newProduct
   } else {
     // Add new user
     products.push(newProduct)
@@ -118,14 +133,14 @@ function validateForm(formData) {
   const urlPattern = /^https?:\/\/.+/
 
   console.log(!price)
-  console.log(price < 0)
+  console.log(description.length)
   if (
     !title ||
     title.length < 3 ||
     title.length > 50 ||
     !description ||
     description.length < 3 ||
-    description.length > 50 ||
+    description.length > 250 ||
     !price ||
     price < 0 ||
     !brand ||
@@ -152,7 +167,7 @@ function deleteProduct(productId) {
 function resetForm() {
   const form = document.getElementById('addProductForm')
   form.reset()
-  editingUserId = null // Reset editing user ID
+  editingUserId = null
   document.getElementById('modal-title').innerText = 'Adicionar Produto'
   document.getElementById('modal-submit-button').innerText = 'Adicionar'
 }
@@ -179,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const span = document.getElementsByClassName('close')[0]
 
   btn.onclick = function () {
-    resetForm() // Ensure the form is reset when adding a new user
+    resetForm()
     modal.style.display = 'block'
   }
 
@@ -195,10 +210,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Handle form submission
   const form = document.getElementById('addProductForm')
   form.addEventListener('submit', saveProduct)
 
   const filterInput = document.getElementById('products-filter')
   filterInput.addEventListener('input', filterProducts)
+
+  const price = document.getElementById('price')
+  price.addEventListener('input', function () {
+    if (this.value < 0) {
+      this.value = 0
+    }
+  })
 })
