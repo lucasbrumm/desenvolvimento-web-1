@@ -1,6 +1,7 @@
 const apiUrl = 'https://dummyjson.com/products'
 
 const products = []
+let editingUserId = null
 
 function displayProducts(filteredProducts = products) {
   const productList = document.getElementById('product-list')
@@ -66,7 +67,79 @@ function fetchProducts() {
 
 function editProduct() {}
 
-function saveProduct() {}
+function saveProduct(event) {
+  event.preventDefault()
+  const form = document.getElementById('addProductForm')
+  const formData = new FormData(form)
+
+  // Validate form fields
+  if (!validateForm(formData)) {
+    return
+  }
+
+  const imageUrl = formData.get('thumbnail') || form.thumbnail.value
+
+  const newProduct = {
+    id: editingUserId || Date.now(), // Use existing ID or generate a new one
+    title: formData.get('title'),
+    description: formData.get('description'),
+    price: formData.get('price'),
+    brand: formData.get('brand'),
+    category: formData.get('category'),
+    thumbnail: imageUrl,
+  }
+
+  if (editingUserId) {
+    // Update existing user
+    const productIndex = products.findIndex((u) => u.id == editingUserId)
+    products[productIndex] = newUser
+  } else {
+    // Add new user
+    products.push(newProduct)
+  }
+
+  // Reset form and close modal
+  resetForm()
+  const modal = document.getElementById('addProductModal')
+  modal.style.display = 'none'
+
+  // Refresh user list
+  displayProducts()
+}
+
+function validateForm(formData) {
+  const title = formData.get('title')
+  const description = formData.get('description')
+  const price = formData.get('price')
+  const brand = formData.get('brand')
+  const category = formData.get('category')
+  const thumbnail = formData.get('thumbnail')
+
+  const urlPattern = /^https?:\/\/.+/
+
+  console.log(!price)
+  console.log(price < 0)
+  if (
+    !title ||
+    title.length < 3 ||
+    title.length > 50 ||
+    !description ||
+    description.length < 3 ||
+    description.length > 50 ||
+    !price ||
+    price < 0 ||
+    !brand ||
+    brand.length < 3 ||
+    !category ||
+    category.length < 3 ||
+    (thumbnail && thumbnail.size > 0 && !urlPattern.test(thumbnail.name))
+  ) {
+    alert('Por favor, preencha todos os campos corretamente.')
+    return false
+  }
+
+  return true
+}
 
 function deleteProduct(productId) {
   const productIndex = products.findIndex((u) => u.id == productId)
@@ -121,6 +194,10 @@ document.addEventListener('DOMContentLoaded', function () {
       resetForm()
     }
   }
+
+  // Handle form submission
+  const form = document.getElementById('addProductForm')
+  form.addEventListener('submit', saveProduct)
 
   const filterInput = document.getElementById('products-filter')
   filterInput.addEventListener('input', filterProducts)
