@@ -1,10 +1,10 @@
 class User {
-  constructor(id, name, lastname, email, age, photo) {
+  constructor(id, firstName, lastName, email, age, image) {
     this.id = id
-    this.name = name
-    this.lastname = lastname
+    this.firstName = firstName
+    this.lastName = lastName
     this.email = email
     this.age = age
-    this.photo = photo
+    this.image = image
   }
 }
