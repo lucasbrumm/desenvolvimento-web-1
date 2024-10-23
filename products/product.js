@@ -1,5 +1,3 @@
-// titulo, descrição, preço, marca, categoria e fotos
-
 class Product {
   constructor(id, title, description, price, brand, category, photos) {
     this.id = id

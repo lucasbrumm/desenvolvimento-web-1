@@ -130,10 +130,76 @@ a:visited {
 .card-users:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
-  cursor: pointer;
 }
 
 .card-users img {
   width: 50%;
   border-radius: 100%;
+}
+
+.container-user-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btn-edit-user {
+  background-color: #cce5ff;
+  border: none;
+  color: #004085;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn-edit-user:hover {
+  background-color: #b8daff;
+}
+
+.btn-delete-user {
+  background-color: #f8d7da;
+  border: none;
+  color: #721c24;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn-delete-user:hover {
+  background-color: #f5c6cb;
+}
+
+.container-add-user {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+}
+
+.btn-add-user {
+  background-color: #f8f9fa;
+  border: none;
+  color: #155724;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn-add-user:hover {
+  background-color: #e9ecef;
 }
