@@ -3,10 +3,10 @@ const apiUrl = 'https://dummyjson.com/users'
 const users = []
 let editingUserId = null
 
-function displayUsers() {
+function displayUsers(filteredUsers = users) {
   const postList = document.getElementById('user-list')
   postList.innerHTML = ''
-  users.forEach((user) => {
+  filteredUsers.forEach((user) => {
     const listItem = document.createElement('div')
     listItem.setAttribute('class', 'card-users')
     listItem.innerHTML = `
@@ -141,6 +141,18 @@ function resetForm() {
   document.getElementById('modal-submit-button').innerText = 'Adicionar'
 }
 
+function filterUsers(event) {
+  const searchTerm = event.target.value.toLowerCase()
+  const filteredUsers = users.filter((user) => {
+    return (
+      user.firstName.toLowerCase().includes(searchTerm) ||
+      user.lastName.toLowerCase().includes(searchTerm) ||
+      user.email.toLowerCase().includes(searchTerm)
+    )
+  })
+  displayUsers(filteredUsers)
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   fetchUsers()
 
@@ -176,4 +188,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // Handle form submission
   const form = document.getElementById('addUserForm')
   form.addEventListener('submit', saveUser)
+
+  // Handle user filter
+  const filterInput = document.getElementById('user-filter')
+  filterInput.addEventListener('input', filterUsers)
+
+  // Prevent negative numbers in age input
+  const ageInput = document.getElementById('age')
+  ageInput.addEventListener('input', function () {
+    if (this.value < 0) {
+      this.value = 0
+    }
+  })
 })
