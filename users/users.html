@@ -43,23 +43,50 @@
           <form id="addUserForm">
             <div class="field-group">
               <label for="firstName">Nome</label>
-              <input type="text" id="firstName" name="firstName" required />
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                minlength="3"
+                maxlength="50"
+              />
             </div>
             <div class="field-group">
               <label for="lastName">Sobrenome:</label>
-              <input type="text" id="lastName" name="lastName" required />
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                minlength="3"
+                maxlength="50"
+              />
             </div>
             <div class="field-group">
               <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              />
             </div>
             <div class="field-group">
               <label for="age">Idade:</label>
-              <input type="number" id="age" name="age" min="0" required />
+              <input
+                type="number"
+                id="age"
+                name="age"
+                min="0"
+                max="120"
+                required
+              />
             </div>
             <div class="field-group">
               <label for="image">Imagem:</label>
-              <input type="file" id="image" name="image" />
+              <input type="url" id="image" name="image" pattern="https?://.+" />
             </div>
             <div class="field-group"></div>
             <div class="container-btn-submit">

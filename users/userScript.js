@@ -74,7 +74,7 @@ function editUser(userId) {
     form.lastName.value = user.lastName
     form.email.value = user.email
     form.age.value = user.age
-    form.image.dataset.previousImage = user.image // Store the previous image URL
+    form.image.value = user.image // Set the previous image URL
 
     // Update modal title and button text
     document.getElementById('modal-title').innerText = 'Editar Usuário'
@@ -94,16 +94,20 @@ function saveUser(event) {
   const form = document.getElementById('addUserForm')
   const formData = new FormData(form)
 
+  // Validate form fields
+  if (!validateForm(formData)) {
+    return
+  }
+
+  const imageUrl = formData.get('image') || form.image.value
+
   const newUser = {
     id: editingUserId || Date.now(), // Use existing ID or generate a new one
     firstName: formData.get('firstName'),
     lastName: formData.get('lastName'),
     email: formData.get('email'),
     age: formData.get('age'),
-    image:
-      formData.get('image') && formData.get('image').size > 0
-        ? URL.createObjectURL(formData.get('image'))
-        : form.image.dataset.previousImage || 'default.jpg', // Use previous image or default if none provided
+    image: imageUrl || 'default.jpg', // Use previous image or default if none provided
   }
 
   if (editingUserId) {
@@ -122,6 +126,37 @@ function saveUser(event) {
 
   // Refresh user list
   displayUsers()
+}
+
+function validateForm(formData) {
+  const firstName = formData.get('firstName')
+  const lastName = formData.get('lastName')
+  const email = formData.get('email')
+  const age = formData.get('age')
+  const image = formData.get('image')
+
+  const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
+  const urlPattern = /^https?:\/\/.+/
+
+  if (
+    !firstName ||
+    firstName.length < 3 ||
+    firstName.length > 50 ||
+    !lastName ||
+    lastName.length < 3 ||
+    lastName.length > 50 ||
+    !email ||
+    !emailPattern.test(email) ||
+    !age ||
+    age < 0 ||
+    age > 120 ||
+    (image && image.size > 0 && !urlPattern.test(image.name))
+  ) {
+    alert('Por favor, preencha todos os campos corretamente.')
+    return false
+  }
+
+  return true
 }
 
 function deleteUser(userId) {
